@@ -7,8 +7,7 @@ import com.example.controller.SetupController;
 
 @Component
 public class JerseyConfig extends ResourceConfig {
-    public JerseyConfig() {
-        packages("com.example.controller");
-        
-    }
+	public JerseyConfig() {
+		packages("com.example.controller");
+	}
 }

@@ -1,4 +1,4 @@
-package com.example.service;
+package com.legacy.service;
 
 import java.util.List;
 
@@ -12,25 +12,21 @@ import com.example.model.Account;
 @Service
 @Transactional
 public class AccountService {
-	
 	@Autowired
 	private AccountDao aDao;
 
 	public AccountService() {
-
 	}
 
 	public void add(Account acc) {
-		aDao.createAccount(acc);
-	}
-	
-	public Account get(int id) {
-		return aDao.getAccountById(id);
+		aDao.save(acc);
 	}
 
+	public Account findByBankNumber(int id) {
+		return aDao.findByBankNumber(id);
+	}
 
 	public List<Account> getAll() {
-		return aDao.accounts();
+		return (List<Account>) aDao.findAll();
 	}
-
 }

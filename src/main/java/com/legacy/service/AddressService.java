@@ -1,6 +1,5 @@
-package com.example.service;
+package com.legacy.service;
 
-import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -8,34 +7,30 @@ import org.springframework.transaction.annotation.Transactional;
 import com.example.dao.AddressDao;
 import com.example.model.Address;
 
-
 @Service
 @Transactional
 public class AddressService {
-
 	@Autowired
 	private AddressDao aDao;
 
 	public AddressService() {
-
 	}
 
-	public void add(Address address) {
-		aDao.createAdress(address);
+	public void add(Address acc) {
+		aDao.save(acc);
+	}
+
+	public Address findByStreet(String street) {
+		return aDao.findByStreet(street);
+	}
+
+	public Address findByZipCode(String zip) {
+		return aDao.findByZipcode(zip);
+	}
+
+	public Address findByCity(String city) {
+		return aDao.findByCity(city);
 	}
 	
-
-	
-
-	public Address get(int id) {
-		return aDao.getAdressbyId(id);
-	}
-
-
-
-	public List<Address> getAll() {
-		return aDao.listAdresses();
-	}
-
 	
 }
